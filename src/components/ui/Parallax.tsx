@@ -8,7 +8,7 @@ import {
   useTransform,
   type MotionValue,
 } from "framer-motion";
-import { useEffect, useRef, useState, type ReactNode, type RefObject } from "react";
+import { useEffect, useState, type ReactNode, type RefObject } from "react";
 
 /**
  * Multi-depth parallax scene, adapted from the pointer + scroll parallax
@@ -32,10 +32,16 @@ import { useEffect, useRef, useState, type ReactNode, type RefObject } from "rea
 
 /** True only on devices that can meaningfully hover with a precise pointer. */
 function useFinePointer(): boolean {
-  const [fine, setFine] = useState(false);
+  // Lazy initializer runs during render, not after — so the first client
+  // render already reflects reality instead of forcing a second render via
+  // setState in an effect. SSR always yields false since window is absent.
+  const [fine, setFine] = useState(() =>
+    typeof window === "undefined"
+      ? false
+      : window.matchMedia("(hover: hover) and (pointer: fine)").matches,
+  );
   useEffect(() => {
     const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
-    setFine(mq.matches);
     const onChange = (e: MediaQueryListEvent) => setFine(e.matches);
     mq.addEventListener("change", onChange);
     return () => mq.removeEventListener("change", onChange);
