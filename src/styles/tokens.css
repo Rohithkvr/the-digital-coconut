@@ -1,0 +1,73 @@
+/*
+ * ─────────────────────────────────────────────────────────────
+ *  The Digital Coconut — Design Tokens
+ *  Linear / Modern depth system, tinted to the TDC brand greens.
+ * ─────────────────────────────────────────────────────────────
+ *  Contrast notes (measured against --canvas-base #060B08):
+ *    #EDEDEF  16.9:1   body headings
+ *    #8FA499   7.5:1   muted body copy
+ *    #60B97E   8.3:1   links, accent text, glow source
+ *    #8CA77A   7.5:1   eyebrow / olive metadata
+ *    #1E5B3A   2.5:1   NEVER use as text on dark — solid fills only
+ *                      (white on #1E5B3A is 8.0:1, on #2E7E50 is 5.0:1)
+ * ─────────────────────────────────────────────────────────────
+ */
+
+:root {
+  /* ── Canvas ───────────────────────────────────────────────
+     Near-blacks carry a faint green cast so the brand reads even
+     in the negative space. Never #000. */
+  --canvas-deep:        #030605;
+  --canvas-base:        #060B08;
+  --canvas-elevated:    #0B1410;
+  --canvas-elevated-2:  #112019;
+
+  /* ── Translucent surfaces ─────────────────────────────── */
+  --surface:            rgba(255, 255, 255, 0.05);
+  --surface-hover:      rgba(255, 255, 255, 0.08);
+  --surface-glass:      rgba(11, 20, 16, 0.72);
+
+  /* ── Foreground ───────────────────────────────────────── */
+  --fg:                 #EDEDEF;
+  --fg-muted:           #8FA499;
+  --fg-subtle:          rgba(237, 237, 239, 0.48);
+  --fg-inverse:         #04100A;
+
+  /* ── Brand greens (from the brand guideline) ──────────── */
+  --brand-primary:      #1E5B3A;
+  --brand-secondary:    #4A8F5B;
+  --brand-olive:        #8CA77A;
+  --brand-light:        #DDE7D6;
+  --brand-charcoal:     #1F2D26;
+
+  /* ── Accent scale — derived for legibility on dark ────── */
+  --accent:             #2E7E50;  /* solid fills, white text 5.0:1 */
+  --accent-deep:        #1E5B3A;  /* gradient floor, white text 8.0:1 */
+  --accent-bright:      #4A9C64;  /* hover fill */
+  --accent-mint:        #60B97E;  /* text, icons, hairlines, glow 8.3:1 */
+  --accent-glow:        rgba(96, 185, 126, 0.30);
+  --accent-glow-soft:   rgba(96, 185, 126, 0.12);
+
+  /* ── Borders ──────────────────────────────────────────── */
+  --border:             rgba(255, 255, 255, 0.06);
+  --border-hover:       rgba(255, 255, 255, 0.11);
+  --border-accent:      rgba(96, 185, 126, 0.32);
+
+  /* ── Elevation — always multi-layer, never a single shadow ── */
+  --shadow-card:        0 0 0 1px rgba(255, 255, 255, 0.05),
+                        0 2px 20px rgba(0, 0, 0, 0.45),
+                        0 0 40px rgba(0, 0, 0, 0.22);
+  --shadow-card-hover:  0 0 0 1px rgba(96, 185, 126, 0.22),
+                        0 8px 40px rgba(0, 0, 0, 0.55),
+                        0 0 70px rgba(96, 185, 126, 0.08);
+  --shadow-accent:      0 0 0 1px rgba(96, 185, 126, 0.45),
+                        0 4px 14px rgba(30, 91, 58, 0.45),
+                        inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+  --shadow-inset-top:   inset 0 1px 0 0 rgba(255, 255, 255, 0.09);
+
+  /* ── Motion — expo-out, quick, never bouncy ───────────── */
+  --ease-expo:          cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-quick:          200ms;
+  --dur-base:           300ms;
+  --dur-entrance:       600ms;
+}

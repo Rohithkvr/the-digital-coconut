@@ -1,0 +1,67 @@
+/*
+ * ─────────────────────────────────────────────────────────────
+ *  Brand fonts — Grift (headlines) · Xenon Nue (body)
+ * ─────────────────────────────────────────────────────────────
+ *  Both are commercial licences and are NOT in this repo:
+ *    Grift      — Ridha / 38.lineart  (MyFonts, Creative Market)
+ *    Xenon Nue  — Alwin Johnson / Webhance (MyFonts, Envato Elements)
+ *
+ *  TO ACTIVATE: buy the web licence, convert to .woff2, and drop the
+ *  files into /public/fonts/ using exactly the names below. Nothing
+ *  else needs to change — the font stacks in globals.css already list
+ *  these families first.
+ *
+ *  Until the files exist these @font-face rules simply fail to load and
+ *  the browser falls through to the substitutes (Outfit / Plus Jakarta
+ *  Sans). You will see 404s for these URLs in devtools until then;
+ *  that is expected and harmless.
+ * ─────────────────────────────────────────────────────────────
+ */
+
+@font-face {
+  font-family: "Grift";
+  src: url("/fonts/Grift-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Grift";
+  src: url("/fonts/Grift-Semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Grift";
+  src: url("/fonts/Grift-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Xenon Nue";
+  src: url("/fonts/XenonNue-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Xenon Nue";
+  src: url("/fonts/XenonNue-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Xenon Nue";
+  src: url("/fonts/XenonNue-Semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}

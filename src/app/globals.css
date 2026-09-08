@@ -1,0 +1,139 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+@import "../styles/brand-fonts.css";
+
+/*
+ * Tailwind v4 theme bridge.
+ * Tokens live in tokens.css; this file only exposes them as utilities
+ * (bg-canvas-base, text-fg-muted, border-accent, ease-expo, …).
+ */
+@theme inline {
+  --color-canvas-deep:       var(--canvas-deep);
+  --color-canvas-base:       var(--canvas-base);
+  --color-canvas-elevated:   var(--canvas-elevated);
+  --color-canvas-elevated-2: var(--canvas-elevated-2);
+
+  --color-surface:           var(--surface);
+  --color-surface-hover:     var(--surface-hover);
+  --color-surface-glass:     var(--surface-glass);
+
+  --color-fg:                var(--fg);
+  --color-fg-muted:          var(--fg-muted);
+  --color-fg-subtle:         var(--fg-subtle);
+  --color-fg-inverse:        var(--fg-inverse);
+
+  --color-accent:            var(--accent);
+  --color-accent-deep:       var(--accent-deep);
+  --color-accent-bright:     var(--accent-bright);
+  --color-accent-mint:       var(--accent-mint);
+
+  --color-brand-olive:       var(--brand-olive);
+  --color-brand-light:       var(--brand-light);
+
+  --color-line:              var(--border);
+  --color-line-hover:        var(--border-hover);
+  --color-line-accent:       var(--border-accent);
+
+  /* Brand faces first; the Google substitutes carry the load until the
+     licensed files land in /public/fonts (see styles/brand-fonts.css). */
+  --font-sans:    "Xenon Nue", var(--font-jakarta), system-ui, -apple-system, sans-serif;
+  --font-display: "Grift", var(--font-outfit), var(--font-jakarta), system-ui, sans-serif;
+  --font-mono:    var(--font-mono-jb), ui-monospace, SFMono-Regular, monospace;
+
+  --ease-expo:    cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-float-slow:    float-slow 10s ease-in-out infinite;
+  --animate-float-reverse: float-reverse 12s ease-in-out infinite;
+  --animate-pulse-glow:    pulse-glow 8s ease-in-out infinite;
+  --animate-shimmer:       shimmer 6s linear infinite;
+}
+
+/* ── Base ─────────────────────────────────────────────────── */
+body {
+  background-color: var(--canvas-base);
+  color: var(--fg);
+  font-family: "Xenon Nue", var(--font-jakarta), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: rgba(96, 185, 126, 0.28);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-mint);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--canvas-deep); }
+::-webkit-scrollbar-thumb {
+  background: rgba(96, 185, 126, 0.18);
+  border-radius: 999px;
+  border: 2px solid var(--canvas-deep);
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(96, 185, 126, 0.32); }
+
+/* ── Keyframes ────────────────────────────────────────────── */
+@keyframes float-slow {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%      { transform: translate3d(0, -24px, 0) rotate(1deg); }
+}
+@keyframes float-reverse {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%      { transform: translate3d(0, 20px, 0) rotate(-1deg); }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.35; }
+  50%      { opacity: 0.7; }
+}
+@keyframes caret {
+  0%, 50%   { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Every ambient/decorative animation stops for reduced-motion users. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Composed utilities ───────────────────────────────────── */
+@utility text-gradient {
+  background-image: linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0.96) 50%, rgba(255,255,255,0.78) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility text-gradient-accent {
+  background-image: linear-gradient(100deg, var(--accent-mint), #A8D5B5, var(--accent-mint));
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: var(--animate-shimmer);
+}
+
+@utility grid-overlay {
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.028) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.028) 1px, transparent 1px);
+  background-size: 64px 64px;
+}

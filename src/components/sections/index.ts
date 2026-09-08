@@ -1,0 +1,12 @@
+export { BuiltForKerala } from "./BuiltForKerala";
+export { Contact } from "./Contact";
+export { Faq } from "./Faq";
+export { Hero } from "./Hero";
+export { HowWeWork } from "./HowWeWork";
+export { Industries } from "./Industries";
+export { NoCaseStudies } from "./NoCaseStudies";
+export { Pricing } from "./Pricing";
+export { Problems } from "./Problems";
+export { Services } from "./Services";
+export { WhyOneTeam } from "./WhyOneTeam";
+export { Work } from "./Work";
