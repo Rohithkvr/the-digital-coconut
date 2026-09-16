@@ -65,10 +65,10 @@ export function Contact() {
                 <dt className="font-mono text-[11px] tracking-[0.18em] text-fg-subtle uppercase">
                   Phone / WhatsApp
                 </dt>
-                <dd className="mt-1.5">
+                <dd className="mt-0.5">
                   <a
                     href={site.phoneHref}
-                    className="text-fg transition-colors duration-200 ease-expo hover:text-accent-mint"
+                    className="inline-block py-1.5 text-fg transition-colors duration-200 ease-expo hover:text-accent-mint"
                   >
                     {site.phone}
                   </a>
@@ -78,10 +78,10 @@ export function Contact() {
                 <dt className="font-mono text-[11px] tracking-[0.18em] text-fg-subtle uppercase">
                   Email
                 </dt>
-                <dd className="mt-1.5">
+                <dd className="mt-0.5">
                   <a
                     href={site.emailHref}
-                    className="break-all text-fg transition-colors duration-200 ease-expo hover:text-accent-mint"
+                    className="inline-block break-all py-1.5 text-fg transition-colors duration-200 ease-expo hover:text-accent-mint"
                   >
                     {site.email}
                   </a>

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { nav } from "@/content/site";
 import { ButtonLink } from "@/components/ui/Button";
+import { Magnetic } from "@/components/ui/Magnetic";
 import { Logo } from "./Logo";
 import { CloseIcon, MenuIcon } from "./icons";
 import { cn } from "@/lib/cn";
@@ -91,9 +92,11 @@ export function Header() {
 
           <div className="flex items-center justify-end gap-2">
             <div className="hidden sm:block">
-              <ButtonLink href="/#contact" size="sm" className="rounded-full">
-                Tell us what you need
-              </ButtonLink>
+              <Magnetic strength={8}>
+                <ButtonLink href="/#contact" size="sm" className="rounded-full">
+                  Tell us what you need
+                </ButtonLink>
+              </Magnetic>
             </div>
 
             <button

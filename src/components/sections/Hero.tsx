@@ -4,6 +4,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { useRef } from "react";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
+import { Magnetic } from "@/components/ui/Magnetic";
 import { TypewriterWord } from "@/components/ui/TypewriterWord";
 import { hero, services } from "@/content/home";
 import { site } from "@/content/site";
@@ -100,18 +101,25 @@ export function Hero() {
             {...rise(0.24)}
             className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
-            <ButtonLink href={hero.primaryCta.href} size="lg" className="w-full sm:w-auto">
-              {hero.primaryCta.label}
-              <ArrowIcon className="h-4 w-4 transition-transform duration-200 ease-expo group-hover:translate-x-0.5" />
-            </ButtonLink>
-            <ButtonLink
-              href={hero.secondaryCta.href}
-              variant="secondary"
-              size="lg"
-              className="w-full sm:w-auto"
-            >
-              {hero.secondaryCta.label}
-            </ButtonLink>
+            {/* The width classes live on the Magnetic wrapper as well as the
+                button: the wrapper takes over layout here, so without them
+                the buttons would stop filling the row on mobile. */}
+            <Magnetic className="w-full sm:w-auto">
+              <ButtonLink href={hero.primaryCta.href} size="lg" className="w-full sm:w-auto">
+                {hero.primaryCta.label}
+                <ArrowIcon className="h-4 w-4 transition-transform duration-200 ease-expo group-hover:translate-x-0.5" />
+              </ButtonLink>
+            </Magnetic>
+            <Magnetic className="w-full sm:w-auto" strength={10}>
+              <ButtonLink
+                href={hero.secondaryCta.href}
+                variant="secondary"
+                size="lg"
+                className="w-full sm:w-auto"
+              >
+                {hero.secondaryCta.label}
+              </ButtonLink>
+            </Magnetic>
           </motion.div>
 
           {/* Disciplines — one centred line, fading hairline above */}
