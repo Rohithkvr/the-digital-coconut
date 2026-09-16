@@ -13,3 +13,4 @@ export { ScrollProgress } from "./ScrollProgress";
 export { Section } from "./Section";
 export { SectionHeading } from "./SectionHeading";
 export { SpotlightCard } from "./SpotlightCard";
+export { VideoFacade } from "./VideoFacade";

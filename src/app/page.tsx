@@ -9,6 +9,8 @@ import {
   Pricing,
   Problems,
   Services,
+  Shorts,
+  Studio,
   WhyOneTeam,
 } from "@/components/sections";
 import { JsonLd, faqSchema } from "@/lib/schema";
@@ -23,6 +25,8 @@ export default function HomePage() {
       <HowWeWork />
       <Problems />
       <NoCaseStudies />
+      <Studio />
+      <Shorts />
       <BuiltForKerala />
       <Pricing />
       <Contact />
