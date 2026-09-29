@@ -64,8 +64,11 @@ export function TypewriterWord({
       aria-hidden="true"
       className={cn("relative inline-flex items-center gap-[0.06em] align-middle", className)}
     >
-      {/* min-width keeps the caret from jumping against the left edge between words */}
-      <span className="text-gradient-accent min-w-[0.4em] whitespace-pre">{shown}</span>
+      {/* min-width keeps the caret from jumping against the left edge between
+          words — which only matters while the word is centred (mobile). Once
+          the hero goes left-aligned at lg, the same reservation reads as a
+          stray indent before an empty caret, so it's dropped there. */}
+      <span className="text-gradient-accent min-w-[0.4em] whitespace-pre lg:min-w-0">{shown}</span>
       <span
         className={cn(
           "h-[0.85em] w-[0.05em] min-w-0.5 shrink-0 rounded-[1px] bg-accent-mint",

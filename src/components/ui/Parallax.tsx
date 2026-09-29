@@ -8,7 +8,7 @@ import {
   useTransform,
   type MotionValue,
 } from "framer-motion";
-import { useEffect, useState, type ReactNode, type RefObject } from "react";
+import { useEffect, useSyncExternalStore, type ReactNode, type RefObject } from "react";
 
 /**
  * Multi-depth parallax scene, adapted from the pointer + scroll parallax
@@ -31,22 +31,26 @@ import { useEffect, useState, type ReactNode, type RefObject } from "react";
  */
 
 /** True only on devices that can meaningfully hover with a precise pointer. */
+const FINE_POINTER = "(hover: hover) and (pointer: fine)";
+
+function subscribeFinePointer(onChange: () => void) {
+  const mq = window.matchMedia(FINE_POINTER);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
 function useFinePointer(): boolean {
-  // Lazy initializer runs during render, not after — so the first client
-  // render already reflects reality instead of forcing a second render via
-  // setState in an effect. SSR always yields false since window is absent.
-  const [fine, setFine] = useState(() =>
-    typeof window === "undefined"
-      ? false
-      : window.matchMedia("(hover: hover) and (pointer: fine)").matches,
+  // useSyncExternalStore, not a lazy useState initializer: the initializer
+  // reads the real media query on the client's FIRST render, while the
+  // server rendered `false` — so any markup gated on this value (the hero's
+  // cursor spotlight, for one) differed between the two and React threw a
+  // hydration error. Here hydration uses the server snapshot, then React
+  // re-renders with the live value.
+  return useSyncExternalStore(
+    subscribeFinePointer,
+    () => window.matchMedia(FINE_POINTER).matches,
+    () => false,
   );
-  useEffect(() => {
-    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
-    const onChange = (e: MediaQueryListEvent) => setFine(e.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
-  return fine;
 }
 
 /**
