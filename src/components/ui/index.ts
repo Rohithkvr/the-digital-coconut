@@ -3,7 +3,6 @@ export { Button, ButtonLink } from "./Button";
 export { ClipReveal } from "./ClipReveal";
 export { Container } from "./Container";
 export { Eyebrow } from "./Eyebrow";
-export { HeroMark } from "./HeroMark";
 export { LocalTime } from "./LocalTime";
 export { Magnetic } from "./Magnetic";
 export { MediaPlaceholder } from "./MediaPlaceholder";

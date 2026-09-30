@@ -43,7 +43,7 @@ const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 
  * to the left, the same direction the trail runs in the mark. A tap on touch
  * throws a small burst instead — a drag there is a scroll, not a stroke.
  *
- * Once, shortly after load, a ghost stroke runs out from `originRef` so the
+ * Once, shortly after load, a ghost stroke sweeps across `originRef` so the
  * interaction is visible before anyone touches anything.
  *
  * Canvas rather than Framer Motion on purpose: a stroke spawns dozens of
@@ -63,7 +63,7 @@ export function PixelTrail({
 }: {
   /** Element whose pointer movement draws the trail. */
   targetRef: RefObject<HTMLElement | null>;
-  /** Element the intro stroke starts from. */
+  /** Element the intro stroke sweeps across, right to left. */
   originRef?: RefObject<HTMLElement | null>;
   /** Seconds before the intro stroke. */
   introDelay?: number;
@@ -226,20 +226,22 @@ export function PixelTrail({
     target.addEventListener("pointerleave", onLeave);
     target.addEventListener("pointerdown", onDown, { passive: true });
 
-    // Intro: one ghost stroke out of the mark, sweeping left across the
-    // headline — the interaction shown before it's asked for.
+    // Intro: one ghost stroke sweeping right to left across the origin —
+    // the headline — so the interaction is shown before it's asked for.
+    // Right to left, and drifting down, because that's the direction the
+    // pixels trail off the mark in the logo.
     let introFrame = 0;
     const introTimer = window.setTimeout(() => {
       const origin = originRef?.current;
       if (!origin || !visible) return;
       const o = origin.getBoundingClientRect();
-      const x0 = o.left + o.width * 0.3;
-      const y0 = o.top + o.height * 0.32;
-      const x1 = Math.max(CELL, x0 - Math.min(window.innerWidth * 0.55, 640));
-      const y1 = y0 + o.height * 0.35;
+      const x0 = o.left + o.width * 0.9;
+      const y0 = o.top + o.height * 0.3;
+      const x1 = o.left + o.width * 0.1;
+      const y1 = o.top + o.height * 0.7;
       const ghost = makeStroke();
       const start = performance.now();
-      const duration = 1150;
+      const duration = 1300;
       const step = () => {
         const now = performance.now();
         const k = Math.min(1, (now - start) / duration);

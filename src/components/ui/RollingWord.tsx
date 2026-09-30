@@ -13,9 +13,15 @@ const EASE_IN = [0.7, 0, 0.84, 0] as const;
  * letters flip up and away while the next word's letters rise into the
  * same slot, each letter a few milliseconds behind the last.
  *
- * `popLayout` is what makes it a roll rather than a queue — the leaving
- * word is lifted out of layout the moment it starts to exit, so both words
- * occupy the slot at once instead of one waiting for the other.
+ * Both words are stacked in ONE grid cell and centred in it, rather than
+ * the leaving word being popped out of layout. That keeps the roll centred
+ * on a centred line: the cell's width follows whichever word is widest at
+ * that moment, but every word sits on the cell's centre line, and the cell
+ * sits on the line's — so neither word ever jumps sideways as the widths
+ * change (Perform → Grow shrinks the cell by a third).
+ *
+ * The mask clips vertically only (`overflow-y: clip`), so a wider outgoing
+ * word is never cut off at the sides while the cell narrows around it.
  *
  * Styling notes, both load-bearing:
  * - `letterClassName` is where a gradient goes. A clipped text background
@@ -25,6 +31,11 @@ const EASE_IN = [0.7, 0, 0.84, 0] as const;
  *   gradient's paint area reaches the descender of a "p" — at tight leading
  *   the glyph hangs below its own line box, and the part outside the box
  *   would otherwise render invisible.
+ *
+ * Transform and opacity only — no animated `filter: blur()`. Measured with a
+ * GPU, blurring each letter mid-roll (plus a filter glow around the word)
+ * halved the frame rate during every change; transform and opacity stay on
+ * the compositor.
  *
  * `paused` holds the current word (used while the hero is off-screen).
  * Under reduced motion the first word is shown and nothing cycles. The
@@ -75,27 +86,28 @@ export function RollingWord({
   return (
     <span
       className={cn(
-        "relative inline-flex overflow-hidden pb-[0.18em] -mb-[0.18em] align-bottom",
+        "relative inline-grid overflow-y-clip pb-[0.18em] -mb-[0.18em] align-bottom",
         className,
       )}
     >
-      <AnimatePresence mode="popLayout" initial={false}>
-        <motion.span key={word} className="inline-flex whitespace-pre">
+      <AnimatePresence initial={false}>
+        <motion.span
+          key={word}
+          className="inline-flex justify-self-center whitespace-pre [grid-area:1/1]"
+        >
           {Array.from(word).map((char, k) => (
             <motion.span
               key={k}
               className={cn("inline-block pb-[0.18em] -mb-[0.18em]", letterClassName)}
-              initial={{ y: "105%", opacity: 0, filter: "blur(8px)" }}
+              initial={{ y: "105%", opacity: 0 }}
               animate={{
                 y: "0%",
                 opacity: 1,
-                filter: "blur(0px)",
                 transition: { duration: 0.75, ease: EASE_OUT, delay: 0.08 + k * 0.035 },
               }}
               exit={{
                 y: "-105%",
                 opacity: 0,
-                filter: "blur(8px)",
                 transition: { duration: 0.42, ease: EASE_IN, delay: k * 0.025 },
               }}
             >
