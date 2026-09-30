@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { cn } from "@/lib/cn";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -80,8 +81,8 @@ const tile: Variants = {
  * The brand mark, assembling itself: the tiles of the "C" wipe in along
  * the line of the stroke, then the pixel trail pops out beside it and
  * keeps quietly shedding pixels. Plays once, when the mark first scrolls
- * into view — on a phone it sits below the headline, so a mount-time
- * animation would finish before anyone saw it.
+ * into view rather than on mount, so wherever a layout places it, the
+ * assembly isn't over before anyone can see it.
  *
  * Under reduced motion it renders assembled and still: no slide, no
  * drifters.

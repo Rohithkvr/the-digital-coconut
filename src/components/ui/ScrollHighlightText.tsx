@@ -2,11 +2,11 @@
 
 import {
   motion,
-  useReducedMotion,
   useScroll,
   useTransform,
   type MotionValue,
 } from "framer-motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { useRef } from "react";
 import { cn } from "@/lib/cn";
 
@@ -38,7 +38,16 @@ export function ScrollHighlightText({
   const words = text.split(" ");
 
   if (reduceMotion) {
-    return <p className={cn("text-fg", className)}>{text}</p>;
+    // The ref stays attached even though nothing here animates: `useScroll`
+    // above is called unconditionally (hooks can't be skipped) and looks its
+    // target up on every frame, so a plain <p> without the ref made Framer
+    // throw "Target ref is defined but not hydrated" from inside its frame
+    // loop for every reduced-motion visitor.
+    return (
+      <p ref={ref} className={cn("text-fg", className)}>
+        {text}
+      </p>
+    );
   }
 
   return (

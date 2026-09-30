@@ -99,6 +99,11 @@ body {
   0%, 50%   { opacity: 1; }
   50.01%, 100% { opacity: 0; }
 }
+/* Hero scroll cue: a short bar that runs down a hairline track and out. */
+@keyframes scroll-cue {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(300%); }
+}
 @keyframes shimmer {
   0%   { background-position: 0% 50%; }
   100% { background-position: 200% 50%; }

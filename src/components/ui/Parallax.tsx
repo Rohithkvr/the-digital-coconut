@@ -3,11 +3,11 @@
 import {
   motion,
   useMotionValue,
-  useReducedMotion,
   useSpring,
   useTransform,
   type MotionValue,
 } from "framer-motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { useEffect, useSyncExternalStore, type ReactNode, type RefObject } from "react";
 
 /**

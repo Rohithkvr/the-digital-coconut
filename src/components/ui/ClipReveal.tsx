@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { useRef, type ReactNode } from "react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
