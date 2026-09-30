@@ -46,6 +46,14 @@ export type Film = {
   runtime: string;
   /** Rounded view count. */
   views: string;
+  /**
+   * `false` when the channel has "Allow embedding" switched off for this
+   * video: an embed only shows YouTube's "Video unavailable" card, so the
+   * site links out to youtube.com instead. Check with
+   * youtube.com/oembed?url=…  (401 = embedding off). Turning embedding on
+   * in YouTube Studio and dropping this flag restores in-page playback.
+   */
+  embeddable?: false;
 };
 
 /** The one we lead with — the longest and most-watched original. */
@@ -57,6 +65,7 @@ export const featuredFilm: Film = {
   kind: "Short film",
   runtime: "17:18",
   views: "70K",
+  embeddable: false,
 };
 
 /**
@@ -100,6 +109,7 @@ export const films: readonly Film[] = [
     kind: "Recreation",
     runtime: "1:11",
     views: "133K",
+    embeddable: false,
   },
   {
     slug: "njanaam-nilavu",
@@ -109,6 +119,7 @@ export const films: readonly Film[] = [
     kind: "Short film",
     runtime: "25:26",
     views: "18K",
+    embeddable: false,
   },
   {
     slug: "consent-teaser",
@@ -118,6 +129,7 @@ export const films: readonly Film[] = [
     kind: "Teaser",
     runtime: "1:20",
     views: "8.7K",
+    embeddable: false,
   },
   {
     slug: "njanaam-nilavu-teaser",
@@ -127,6 +139,7 @@ export const films: readonly Film[] = [
     kind: "Teaser",
     runtime: "1:17",
     views: "4.5K",
+    embeddable: false,
   },
   {
     slug: "digital-paulose",
