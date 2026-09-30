@@ -121,7 +121,13 @@ export const pricing = {
   eyebrow: "Pricing",
   heading: "What this actually costs.",
   lede: "Two ways to work with us. A monthly retainer per service, or a one-off sprint scoped to a single goal.",
-  note: "Website development starts at ₹6,000 — priced per project, scoped on a call.",
+  /** Websites are sold per project, outside the two plans. */
+  website: {
+    label: "Websites, on their own",
+    from: "₹6,000",
+    detail: "Website development, priced per project and scoped on a call.",
+    cta: "Get a website quote",
+  },
 } as const;
 
 export const pricingPlans = [
@@ -139,6 +145,9 @@ export const pricingPlans = [
     ],
     cta: "Start with one service",
     featured: true,
+    /** What a retainer can cover; each is billed at `perService`. */
+    services: ["Paid Ads", "SEO", "Social Media", "Consultation"],
+    perService: 20000,
   },
   {
     slug: "sprint",
@@ -154,6 +163,9 @@ export const pricingPlans = [
     ],
     cta: "Scope a sprint",
     featured: false,
+    /** The sprint as its timeline plays it: start, middle, end. */
+    stages: ["Scope call", "Senior-led team", "Your deadline"],
+    artefacts: ["Campaign", "Landing page", "Audit", "System"],
   },
 ] as const;
 
