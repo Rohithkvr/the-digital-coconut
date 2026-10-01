@@ -153,12 +153,6 @@ function RetainerCard() {
     <SpotlightCard
       lift={false}
       className="border-line-accent p-5 sm:p-8 lg:p-10"
-      decoration={
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-32 right-[10%] h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(96,185,126,0.16)_0%,transparent_72%)] blur-2xl"
-        />
-      }
     >
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:gap-x-16 lg:gap-y-8">
         <div className="lg:col-start-1">
@@ -182,7 +176,7 @@ function RetainerCard() {
                     title={locked ? "A retainer starts with one service" : undefined}
                     onClick={() => toggle(service)}
                     className={cn(
-                      "group/chip inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm",
+                      "group/chip inline-flex min-h-11 items-center gap-2 rounded-full border px-3.5 py-2 text-sm",
                       "transition-[background-color,border-color,color] duration-200 ease-expo",
                       "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-mint",
                       on
@@ -274,7 +268,7 @@ function Invoice({ picked, total }: { picked: readonly Service[]; total: number 
       {/* The printer slot */}
       <div className="relative z-10 mx-auto h-4 rounded-full border border-white/10 bg-[#050806] shadow-[inset_0_2px_6px_rgba(0,0,0,0.9)]">
         <span className="absolute inset-x-5 top-1/2 h-[2px] -translate-y-1/2 rounded-full bg-black" />
-        <span className="absolute top-1/2 right-2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-accent-mint shadow-[0_0_8px_rgba(96,185,126,0.9)] motion-safe:animate-pulse" />
+        <span className="absolute top-1/2 right-2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-accent-mint" />
       </div>
 
       <div className="-mt-2 overflow-hidden px-1 pb-6 sm:px-2 drop-shadow-[0_18px_24px_rgba(0,0,0,0.55)]">
@@ -437,7 +431,7 @@ function SprintTimeline({ className }: { className?: string }) {
         {/* The build, refilling each run up to the deadline */}
         <motion.span
           key={`bar-${run}`}
-          className="absolute top-0 left-0 h-2 origin-left rounded-full bg-gradient-to-r from-accent to-accent-mint shadow-[0_0_18px_rgba(96,185,126,0.45)]"
+          className="absolute top-0 left-0 h-2 origin-left rounded-full bg-gradient-to-r from-accent to-accent-mint"
           style={{ width: `${pos * 100}%` }}
           initial={live ? { scaleX: 0 } : false}
           animate={{ scaleX: 1 }}
@@ -446,7 +440,7 @@ function SprintTimeline({ className }: { className?: string }) {
 
         {/* Start */}
         <span className="absolute top-1/2 left-0 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-accent-mint bg-canvas-deep" />
-        <span className="absolute bottom-[calc(50%+1rem)] left-0 font-mono text-[9px] tracking-[0.16em] whitespace-nowrap text-fg-subtle uppercase sm:text-[10px]">
+        <span className="absolute bottom-[calc(50%+1rem)] left-0 font-mono text-[10px] tracking-[0.16em] whitespace-nowrap text-fg-subtle uppercase sm:text-[10px]">
           {sprint.stages[0]}
         </span>
 
@@ -469,7 +463,7 @@ function SprintTimeline({ className }: { className?: string }) {
             <path d="M0 0h14l-4 5 4 5H0z" fill="currentColor" />
           </svg>
           <motion.span
-            className="absolute bottom-[calc(50%+2.6rem)] left-0 font-mono text-[9px] tracking-[0.16em] whitespace-nowrap text-fg uppercase sm:text-[10px]"
+            className="absolute bottom-[calc(50%+2.6rem)] left-0 font-mono text-[10px] tracking-[0.16em] whitespace-nowrap text-fg uppercase sm:text-[10px]"
             initial={false}
             animate={{ x: rightAligned ? "-100%" : "0%" }}
             transition={glide}
@@ -488,7 +482,7 @@ function SprintTimeline({ className }: { className?: string }) {
             >
               <span
                 className={cn(
-                  "flex items-center gap-1.5 rounded-full border border-accent-mint/50 bg-[rgba(46,126,80,0.25)] px-2.5 py-1 font-mono text-[9px] tracking-[0.12em] whitespace-nowrap text-accent-mint uppercase sm:text-[10px]",
+                  "flex items-center gap-1.5 rounded-full border border-accent-mint/50 bg-[rgba(46,126,80,0.25)] px-2.5 py-1 font-mono text-[10px] tracking-[0.12em] whitespace-nowrap text-accent-mint uppercase sm:text-[10px]",
                   rightAligned ? "-translate-x-full" : "-translate-x-1/2",
                 )}
               >

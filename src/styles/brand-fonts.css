@@ -6,15 +6,14 @@
  *    Grift      — Ridha / 38.lineart  (MyFonts, Creative Market)
  *    Xenon Nue  — Alwin Johnson / Webhance (MyFonts, Envato Elements)
  *
- *  TO ACTIVATE: buy the web licence, convert to .woff2, and drop the
- *  files into /public/fonts/ using exactly the names below. Nothing
- *  else needs to change — the font stacks in globals.css already list
- *  these families first.
+ *  TO ACTIVATE: buy the web licence, convert to .woff2, drop the files
+ *  into /public/fonts/ using exactly the names below, then restore
+ *  `@import "../styles/brand-fonts.css";` at the top of app/globals.css.
+ *  The font stacks there already list these families first.
  *
- *  Until the files exist these @font-face rules simply fail to load and
- *  the browser falls through to the substitutes (Outfit / Plus Jakarta
- *  Sans). You will see 404s for these URLs in devtools until then;
- *  that is expected and harmless.
+ *  The import is off until then: with the files missing, every page load
+ *  made six requests that 404'd before falling back to the substitutes
+ *  (Outfit / Plus Jakarta Sans).
  * ─────────────────────────────────────────────────────────────
  */
 

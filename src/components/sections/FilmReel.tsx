@@ -60,7 +60,7 @@ function Cover({ film, index, duplicate }: { film: Film; index: number; duplicat
         className={cn(
           "relative block aspect-video w-full overflow-hidden rounded-md bg-canvas-deep",
           "ring-1 ring-white/[0.07] transition-[box-shadow] duration-300 ease-expo",
-          "group-hover:shadow-[0_0_0_1px_rgba(96,185,126,0.5),0_0_60px_rgba(96,185,126,0.18)]",
+          "group-hover:shadow-[0_0_0_1px_rgba(96,185,126,0.5)]",
         )}
       >
         <Image
@@ -98,7 +98,7 @@ function Cover({ film, index, duplicate }: { film: Film; index: number; duplicat
       </span>
 
       {/* Edge print, as on the rebate of real stock: frame number, runtime */}
-      <span className="mt-2.5 flex items-center justify-between font-mono text-[9px] tracking-[0.22em] text-white/40 uppercase">
+      <span className="mt-2.5 flex items-center justify-between font-mono text-[10px] tracking-[0.22em] text-white/40 uppercase">
         <span aria-hidden="true">{String(index + 1).padStart(2, "0")}A ▸</span>
         <span>{film.runtime}</span>
       </span>

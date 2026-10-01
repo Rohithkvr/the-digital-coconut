@@ -94,7 +94,7 @@ function BuildVisual({ play }: VisualProps) {
               {/* CTA — the cursor lives inside it, so it always lands on it */}
               <motion.span {...appear(play, 0.7)} className="relative mt-3 w-fit">
                 <motion.span
-                  className="block rounded-md bg-accent px-4 py-2 font-mono text-[9px] tracking-[0.14em] text-white uppercase shadow-[var(--shadow-accent)]"
+                  className="block rounded-md bg-accent px-4 py-2 font-mono text-[10px] tracking-[0.14em] text-white uppercase shadow-[var(--shadow-accent)]"
                   animate={play ? { scale: [1, 1, 0.92, 1] } : undefined}
                   transition={{ duration: 0.5, times: [0, 0.3, 0.55, 1], delay: 2.35 }}
                 >
@@ -153,7 +153,7 @@ function BuildVisual({ play }: VisualProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 12l5 5L20 7" />
               </svg>
             </span>
-            <span className="font-mono text-[9px] tracking-[0.12em] text-fg uppercase">New enquiry</span>
+            <span className="font-mono text-[10px] tracking-[0.12em] text-fg uppercase">New enquiry</span>
           </motion.div>
         </div>
       </div>
@@ -181,7 +181,7 @@ function FunnelVisual({ play }: VisualProps) {
             className="rounded-lg border border-white/10 bg-[#0B1410] p-2"
           >
             <span className="block aspect-[16/9] rounded-sm bg-[linear-gradient(135deg,rgba(96,185,126,0.25),rgba(255,255,255,0.03))]" />
-            <span className="mt-1.5 block font-mono text-[8px] tracking-[0.12em] text-fg-subtle uppercase">
+            <span className="mt-1.5 block font-mono text-[10px] tracking-[0.12em] text-fg-subtle uppercase">
               {label}
             </span>
           </motion.div>
@@ -189,7 +189,7 @@ function FunnelVisual({ play }: VisualProps) {
       </div>
 
       <div className="relative mt-[4%] flex-1">
-        <span className="absolute top-0 left-0 font-mono text-[8px] tracking-[0.16em] text-fg-subtle uppercase">
+        <span className="absolute top-0 left-0 font-mono text-[10px] tracking-[0.16em] text-fg-subtle uppercase">
           Impressions
         </span>
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden="true">
@@ -250,7 +250,7 @@ function FunnelVisual({ play }: VisualProps) {
         {...appear(play, 0.5)}
         className="mt-[3%] flex items-center justify-between rounded-lg border border-line-accent bg-accent-mint/[0.06] px-3 py-2"
       >
-        <span className="font-mono text-[8px] tracking-[0.16em] text-accent-mint uppercase">Customers</span>
+        <span className="font-mono text-[10px] tracking-[0.16em] text-accent-mint uppercase">Customers</span>
         <span className="flex gap-1.5">
           {[0, 1, 2].map((k) => (
             <motion.span
@@ -308,7 +308,7 @@ function SearchVisual({ play }: VisualProps) {
         {...appear(play, 1.5)}
         className="rounded-xl border border-white/10 bg-[linear-gradient(160deg,rgba(96,185,126,0.08),rgba(11,20,16,0.9))] p-3"
       >
-        <span className="flex items-center gap-1.5 font-mono text-[8px] tracking-[0.16em] text-accent-mint uppercase">
+        <span className="flex items-center gap-1.5 font-mono text-[10px] tracking-[0.16em] text-accent-mint uppercase">
           <svg viewBox="0 0 24 24" className="h-3 w-3" fill="currentColor">
             <path d="M12 2l2.2 6.3L20 10l-5.8 1.7L12 18l-2.2-6.3L4 10l5.8-1.7z" />
           </svg>
@@ -320,7 +320,7 @@ function SearchVisual({ play }: VisualProps) {
           <span className="block h-1.5 w-[42%] rounded-sm bg-white/15" />
           <motion.span
             {...appear(play, 2.3, { opacity: 0, scale: 0.8 })}
-            className="inline-flex items-center gap-1 rounded-full border border-line-accent bg-accent-mint/10 px-1.5 py-0.5 font-mono text-[8px] text-accent-mint"
+            className="inline-flex items-center gap-1 rounded-full border border-line-accent bg-accent-mint/10 px-1.5 py-0.5 font-mono text-[10px] text-accent-mint"
           >
             <span className="h-1 w-1 rounded-full bg-accent-mint" />
             yourbusiness.in
@@ -349,13 +349,13 @@ function SearchVisual({ play }: VisualProps) {
               />
             )}
             <span className="relative flex items-center justify-between">
-              <span className={cn("font-mono text-[8px]", k === 0 ? "text-accent-mint" : "text-fg-subtle")}>
+              <span className={cn("font-mono text-[10px]", k === 0 ? "text-accent-mint" : "text-fg-subtle")}>
                 {k === 0 ? "yourbusiness.in" : "example.com"}
               </span>
               {k === 0 && (
                 <motion.span
                   {...appear(play, 2.9, { opacity: 0, scale: 0.8 })}
-                  className="rounded-full bg-accent-mint/15 px-1.5 py-px font-mono text-[7px] tracking-[0.12em] text-accent-mint uppercase"
+                  className="rounded-full bg-accent-mint/15 px-1.5 py-px font-mono text-[10px] tracking-[0.12em] text-accent-mint uppercase"
                 >
                   Cited
                 </motion.span>
@@ -453,15 +453,15 @@ function ReelFrame({
         {["top-2 left-2 border-t border-l", "top-2 right-2 border-t border-r", "bottom-2 left-2 border-b border-l", "bottom-2 right-2 border-b border-r"].map((pos) => (
           <span key={pos} aria-hidden="true" className={cn("absolute h-3 w-3 border-white/70", pos)} />
         ))}
-        <span className="absolute top-3 left-5 flex items-center gap-1.5 font-mono text-[9px] tracking-[0.14em] text-white uppercase">
+        <span className="absolute top-3 left-5 flex items-center gap-1.5 font-mono text-[10px] tracking-[0.14em] text-white uppercase">
           <span className={cn("h-1.5 w-1.5 rounded-full bg-red-500", live && "motion-safe:animate-pulse")} />
           Rec
         </span>
-        <motion.span className="absolute top-3 right-5 font-mono text-[9px] tracking-[0.1em] text-white/85 tabular-nums">
+        <motion.span className="absolute top-3 right-5 font-mono text-[10px] tracking-[0.1em] text-white/85 tabular-nums">
           {timecode}
         </motion.span>
         {film && (
-          <span className="absolute bottom-3 left-5 font-mono text-[8px] tracking-[0.14em] text-white/70 uppercase">
+          <span className="absolute bottom-3 left-5 font-mono text-[10px] tracking-[0.14em] text-white/70 uppercase">
             {film.title.split(" — ")[0]}
           </span>
         )}

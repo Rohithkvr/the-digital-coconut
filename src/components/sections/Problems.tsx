@@ -156,7 +156,7 @@ export function Problems() {
           <Reveal>
             <div
               ref={chatRef}
-              className="relative flex h-[30rem] flex-col overflow-hidden rounded-3xl border border-line bg-surface-glass shadow-[var(--shadow-card)] backdrop-blur-xl sm:h-[34rem]"
+              className="relative flex h-[30rem] flex-col overflow-hidden rounded-3xl border border-line bg-surface-glass shadow-[var(--shadow-card)] sm:h-[34rem]"
             >
               {/* Header */}
               <div className="flex items-center gap-3 border-b border-white/5 px-5 py-3.5">
@@ -181,9 +181,6 @@ export function Problems() {
                 aria-hidden="true"
                 className="relative flex flex-1 flex-col justify-end gap-2.5 overflow-hidden px-4 pt-10 pb-5 [mask-image:linear-gradient(to_bottom,transparent,#000_22%)] sm:px-5"
               >
-                <div
-                  className="grid-overlay pointer-events-none absolute inset-0 opacity-30 [background-size:28px_28px]"
-                />
                 <AnimatePresence initial={false}>
                   {thread.map((m) => (
                     <Bubble key={m.id} msg={m} reduceMotion={reduceMotion} />

@@ -21,8 +21,8 @@ export function Faq() {
         <div className="divide-y divide-[color:var(--border)] border-y border-line">
           {faqs.map((faq, i) => (
             <Reveal key={faq.q} delay={i * 0.05} y={16}>
-              <details className="group py-5">
-                <summary className="flex cursor-pointer list-none items-start justify-between gap-6 rounded-lg text-left font-display text-base font-semibold tracking-tight text-fg transition-colors duration-200 ease-expo hover:text-accent-mint sm:text-lg [&::-webkit-details-marker]:hidden">
+              <details className="group">
+                <summary className="flex cursor-pointer list-none items-start justify-between gap-6 rounded-lg py-5 text-left font-display text-base font-semibold tracking-tight text-fg transition-colors duration-200 ease-expo hover:text-accent-mint sm:text-lg [&::-webkit-details-marker]:hidden">
                   {faq.q}
                   <span
                     aria-hidden="true"
@@ -32,7 +32,7 @@ export function Faq() {
                     <span className="absolute top-0 left-1/2 h-3 w-px -translate-x-1/2 bg-current transition-transform duration-300 ease-expo group-open:rotate-90 group-open:opacity-0" />
                   </span>
                 </summary>
-                <p className="mt-3 max-w-2xl pr-10 leading-relaxed text-fg-muted">
+                <p className="-mt-2 max-w-2xl pr-10 pb-5 leading-relaxed text-fg-muted">
                   {faq.a}
                 </p>
               </details>

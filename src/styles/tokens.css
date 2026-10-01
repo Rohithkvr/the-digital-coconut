@@ -30,7 +30,7 @@
   /* ── Foreground ───────────────────────────────────────── */
   --fg:                 #EDEDEF;
   --fg-muted:           #8FA499;
-  --fg-subtle:          rgba(237, 237, 239, 0.48);
+  --fg-subtle:          rgba(237, 237, 239, 0.58); /* 5.4:1 — 0.48 was 4.4:1, under AA */
   --fg-inverse:         #04100A;
 
   /* ── Brand greens (from the brand guideline) ──────────── */

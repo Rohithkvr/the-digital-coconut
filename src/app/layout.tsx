@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono, Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { AmbientBackground } from "@/components/ui/AmbientBackground";
-import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { Footer, Header } from "@/components/layout";
 import { site } from "@/content/site";
 import { JsonLd, organizationSchema } from "@/lib/schema";
@@ -82,7 +81,6 @@ export default function RootLayout({
         </a>
 
         <AmbientBackground />
-        <ScrollProgress />
         <Header />
         <main id="main">{children}</main>
         <Footer />

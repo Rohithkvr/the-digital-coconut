@@ -223,16 +223,8 @@ export function Industries() {
             id="industry-panel"
             role="tabpanel"
             aria-labelledby={`industry-tab-${active}`}
-            className="relative h-full min-h-[26rem] overflow-hidden rounded-3xl border border-line bg-surface-glass p-8 shadow-[var(--shadow-card)] backdrop-blur-xl xl:p-10"
+            className="relative h-full min-h-[26rem] overflow-hidden rounded-3xl border border-line bg-surface-glass p-8 shadow-[var(--shadow-card)] xl:p-10"
           >
-            <div
-              aria-hidden="true"
-              className="grid-overlay pointer-events-none absolute inset-0 opacity-40 [background-size:32px_32px] [mask-image:radial-gradient(ellipse_75%_60%_at_50%_35%,#000_25%,transparent_100%)]"
-            />
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute top-10 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(96,185,126,0.18)_0%,transparent_70%)] blur-2xl"
-            />
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={current.label}

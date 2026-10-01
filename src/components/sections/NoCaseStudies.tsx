@@ -71,10 +71,6 @@ export function NoCaseStudies() {
       <Reveal className="relative overflow-hidden rounded-3xl border border-line bg-gradient-to-b from-white/[0.06] to-white/[0.01] p-6 sm:p-10 lg:p-14">
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -top-40 left-1/3 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(46,126,80,0.22)_0%,transparent_70%)] blur-[90px]"
-        />
-        <span
-          aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/18 to-transparent"
         />
 
@@ -120,7 +116,7 @@ export function NoCaseStudies() {
             >
               <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/5 px-4 py-3">
                 <span className="text-sm font-semibold whitespace-nowrap text-fg">Campaign results</span>
-                <span className="rounded-full border border-white/10 px-2 py-0.5 font-mono text-[9px] tracking-[0.14em] whitespace-nowrap text-fg-subtle uppercase">
+                <span className="rounded-full border border-white/10 px-2 py-0.5 font-mono text-[10px] tracking-[0.14em] whitespace-nowrap text-fg-subtle uppercase">
                   The usual case study
                 </span>
               </div>
@@ -176,7 +172,7 @@ export function NoCaseStudies() {
               <div className="relative grid grid-cols-3 gap-2 p-4">
                 {STATS.map((s, i) => (
                   <div key={s.label} className="rounded-lg border border-white/5 bg-white/[0.02] px-3 py-2.5">
-                    <span className="block font-mono text-[9px] tracking-[0.14em] text-fg-subtle uppercase">{s.label}</span>
+                    <span className="block font-mono text-[10px] tracking-[0.14em] text-fg-subtle uppercase">{s.label}</span>
                     <span className="relative mt-1 block h-7 overflow-hidden font-display text-xl font-semibold tracking-tight text-fg sm:text-2xl">
                       <AnimatePresence initial={false} mode="popLayout">
                         <motion.span
@@ -224,7 +220,7 @@ export function NoCaseStudies() {
                     <path d="M8 20h8M12 16v4" />
                   </svg>
                   <span className="absolute -top-0.5 -right-0.5 flex h-2 w-2">
-                    <span className={cn("absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-70", shown >= 4 && !reduceMotion && "animate-ping")} />
+                    <span className={cn("absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-70")} />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
                   </span>
                 </span>
@@ -254,7 +250,7 @@ function Callout({ on, className, children }: { on: boolean; className?: string;
     <motion.span
       aria-hidden="true"
       className={cn(
-        "absolute z-10 rounded-full border border-[#D98C7A]/40 bg-[#1a0f0c]/90 px-2 py-0.5 font-mono text-[9px] tracking-[0.12em] whitespace-nowrap text-[#E3A596] uppercase",
+        "absolute z-10 rounded-full border border-[#D98C7A]/40 bg-[#1a0f0c]/90 px-2 py-0.5 font-mono text-[10px] tracking-[0.12em] whitespace-nowrap text-[#E3A596] uppercase",
         className,
       )}
       initial={false}

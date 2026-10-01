@@ -111,7 +111,7 @@ export function Services() {
                   </div>
                   <span
                     className={cn(
-                      "mt-2.5 block truncate font-mono text-[10px] tracking-[0.16em] uppercase transition-colors duration-500",
+                      "mt-2.5 block text-xs leading-snug transition-colors duration-500",
                       i === active ? "text-fg" : "text-fg-subtle",
                     )}
                   >
@@ -240,7 +240,7 @@ function StageFrame({
   children: ReactNode;
 }) {
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-line bg-surface-glass shadow-[var(--shadow-card)] backdrop-blur-xl">
+    <div className="relative overflow-hidden rounded-3xl border border-line bg-surface-glass shadow-[var(--shadow-card)]">
       <div className="flex items-center justify-between gap-4 border-b border-white/5 px-5 py-3.5 font-mono text-[10px] tracking-[0.18em] text-fg-subtle uppercase">
         <span className="truncate">
           <span className="text-accent-mint">{String(index + 1).padStart(2, "0")}</span>
@@ -264,14 +264,6 @@ function StageFrame({
           tall and the demonstrations' lower rows were cut off. Measured: 4:5
           is needed below 380px (a 280px-wide frame), square above. */}
       <div className="relative aspect-[4/5] min-[380px]:aspect-square sm:aspect-[4/3] lg:aspect-[16/11]">
-        <div
-          aria-hidden="true"
-          className="grid-overlay absolute inset-0 opacity-50 [background-size:32px_32px] [mask-image:radial-gradient(ellipse_80%_70%_at_50%_45%,#000_30%,transparent_100%)]"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute top-1/2 left-1/2 h-2/3 w-2/3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(96,185,126,0.14)_0%,transparent_70%)] blur-2xl"
-        />
         {children}
       </div>
     </div>

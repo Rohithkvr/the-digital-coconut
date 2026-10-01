@@ -128,7 +128,6 @@ export function WhyOneTeam() {
   const frameScale = useTransform(p, [0.78, 1], [0.97, 1]);
   const badgeOpacity = useTransform(p, [0.86, 1], [0, 1]);
   const badgeScale = useTransform(p, [0.86, 1], [0.85, 1]);
-  const glowOpacity = useTransform(p, [0.7, 1], [0, 1]);
   const arrowsDraw = useTransform(p, [0.04, 0.3], [0, 1]);
   const arrowsFade = useTransform(p, [0.42, 0.62], [1, 0]);
   // Labels appear with their arrows and leave with them.
@@ -168,12 +167,6 @@ export function WhyOneTeam() {
             role="img"
             aria-label="Four separate vendors blaming each other become one in-house team."
           >
-            {/* Light that gathers as the team forms */}
-            <motion.div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-[12%] rounded-full bg-[radial-gradient(circle,rgba(96,185,126,0.22)_0%,transparent_70%)] blur-3xl"
-              style={{ opacity: glowOpacity }}
-            />
 
             {/* Blame, drawn between the scattered vendors */}
             <motion.svg
@@ -208,7 +201,7 @@ export function WhyOneTeam() {
               <motion.span
                 key={b.label}
                 aria-hidden="true"
-                className="pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#D98C7A]/30 bg-[#140c0a]/85 px-2 py-0.5 font-mono text-[9px] tracking-[0.12em] whitespace-nowrap text-[#E3A596] uppercase sm:text-[10px]"
+                className="pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#D98C7A]/30 bg-[#140c0a]/85 px-2 py-0.5 font-mono text-[10px] tracking-[0.12em] whitespace-nowrap text-[#E3A596] uppercase sm:text-[10px]"
                 style={{ left: `${b.lx}%`, top: `${b.ly}%`, opacity: labelOpacity }}
               >
                 {b.label}
@@ -222,7 +215,7 @@ export function WhyOneTeam() {
             {/* The one outline around the merged block */}
             <motion.div
               aria-hidden="true"
-              className="pointer-events-none absolute top-[8%] left-[8%] h-[84%] w-[84%] rounded-2xl border border-accent-mint/50 shadow-[0_0_0_1px_rgba(96,185,126,0.15),0_0_60px_rgba(96,185,126,0.18)]"
+              className="pointer-events-none absolute top-[8%] left-[8%] h-[84%] w-[84%] rounded-2xl border border-accent-mint/50 shadow-[0_0_0_1px_rgba(96,185,126,0.15)]"
               style={{ opacity: frameOpacity, scale: frameScale }}
             />
 
@@ -312,7 +305,7 @@ function VendorTile({
       <span className="mt-3 font-display text-sm leading-tight font-semibold text-fg sm:text-base">
         {tile.role}
       </span>
-      <span className="relative mt-1.5 block h-3.5 font-mono text-[8px] tracking-[0.12em] uppercase sm:text-[9px]">
+      <span className="relative mt-1.5 block h-3.5 font-mono text-[10px] tracking-[0.12em] uppercase sm:text-[10px]">
         <motion.span className="absolute inset-0 whitespace-nowrap text-[#E3A596]/80" style={{ opacity: blameOpacity }}>
           Blames the others
         </motion.span>

@@ -20,15 +20,15 @@ export function Footer() {
           </div>
 
           <nav aria-label="Services">
-            <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-fg-subtle">
+            <h2 className="text-sm font-medium text-fg">
               Services
             </h2>
-            <ul className="mt-5 space-y-1">
+            <ul className="mt-4 sm:mt-5 sm:space-y-1">
               {serviceLinks.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="inline-block py-1.5 text-sm text-fg-muted transition-colors duration-200 ease-expo hover:text-accent-mint"
+                    className="inline-block py-3 sm:py-1.5 text-sm text-fg-muted transition-colors duration-200 ease-expo hover:text-accent-mint"
                   >
                     {item.label}
                   </Link>
@@ -37,7 +37,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/blog"
-                  className="inline-block py-1.5 text-sm text-fg-muted transition-colors duration-200 ease-expo hover:text-accent-mint"
+                  className="inline-block py-3 sm:py-1.5 text-sm text-fg-muted transition-colors duration-200 ease-expo hover:text-accent-mint"
                 >
                   Blog
                 </Link>
@@ -46,14 +46,14 @@ export function Footer() {
           </nav>
 
           <div>
-            <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-fg-subtle">
+            <h2 className="text-sm font-medium text-fg">
               Contact
             </h2>
-            <ul className="mt-5 space-y-1 text-sm">
+            <ul className="mt-4 sm:mt-5 sm:space-y-1 text-sm">
               <li>
                 <a
                   href={site.phoneHref}
-                  className="inline-block py-1.5 text-fg-muted transition-colors duration-200 ease-expo hover:text-accent-mint"
+                  className="inline-block py-3 sm:py-1.5 text-fg-muted transition-colors duration-200 ease-expo hover:text-accent-mint"
                 >
                   {site.phone}
                 </a>
@@ -63,7 +63,7 @@ export function Footer() {
                   href={site.whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 py-1.5 text-fg-muted transition-colors duration-200 ease-expo hover:text-accent-mint"
+                  className="inline-flex items-center gap-2 py-3 sm:py-1.5 text-fg-muted transition-colors duration-200 ease-expo hover:text-accent-mint"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
                   WhatsApp
@@ -72,7 +72,7 @@ export function Footer() {
               <li>
                 <a
                   href={site.emailHref}
-                  className="inline-block break-all py-1.5 text-fg-muted transition-colors duration-200 ease-expo hover:text-accent-mint"
+                  className="inline-block break-all py-3 sm:py-1.5 text-fg-muted transition-colors duration-200 ease-expo hover:text-accent-mint"
                 >
                   {site.email}
                 </a>
@@ -84,7 +84,7 @@ export function Footer() {
                     href={site.reviewsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block py-1.5 text-fg-muted transition-colors duration-200 ease-expo hover:text-accent-mint"
+                    className="inline-block py-3 sm:py-1.5 text-fg-muted transition-colors duration-200 ease-expo hover:text-accent-mint"
                   >
                     Google Reviews
                   </a>

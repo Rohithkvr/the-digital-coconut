@@ -9,6 +9,5 @@ export { Pricing } from "./Pricing";
 export { Problems } from "./Problems";
 export { Services } from "./Services";
 export { WhyOneTeam } from "./WhyOneTeam";
-export { Work } from "./Work";
 export { Studio } from "./Studio";
 export { Shorts } from "./Shorts";

@@ -28,8 +28,8 @@ export function Logo({
       <Image
         src="/brand/logo-full-colour.png"
         alt={site.name}
-        width={742}
-        height={380}
+        width={110}
+        height={56}
         priority
         className={cn(
           "w-auto transition-transform duration-300 ease-expo group-hover:scale-[1.02]",

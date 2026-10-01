@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { nav } from "@/content/site";
 import { ButtonLink } from "@/components/ui/Button";
-import { Magnetic } from "@/components/ui/Magnetic";
 import { Logo } from "./Logo";
 import { CloseIcon, MenuIcon } from "./icons";
 import { cn } from "@/lib/cn";
@@ -15,10 +14,11 @@ import { cn } from "@/lib/cn";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /**
- * Floating glass island: centred, detached from the top edge, frosted.
- * Depth comes from four stacked layers — backdrop blur, a translucent fill,
- * a 1px top inner highlight (the "lit edge" that sells glass), and an outer
- * ambient shadow. It tightens and darkens once the page scrolls under it.
+ * Floating bar: centred and detached from the top edge, on a near-solid
+ * fill that goes fully solid once the page scrolls under it. It used to be
+ * frosted glass (backdrop blur), which re-blurs everything behind it on
+ * every scroll frame — a real cost on phones — for an effect the fill
+ * alone gives.
  */
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -55,13 +55,11 @@ export function Header() {
 
       <div
         className={cn(
-          "mx-auto w-full max-w-5xl rounded-[20px] backdrop-blur-xl",
-          "border border-white/10 transition-all duration-300 ease-expo",
-          // inner top highlight + ambient drop, layered
-          "shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_1px_2px_rgba(0,0,0,0.3),0_8px_32px_rgba(0,0,0,0.35)]",
+          "mx-auto w-full max-w-5xl rounded-[20px]",
+          "border border-white/10 shadow-[0_8px_24px_rgba(0,0,0,0.35)] transition-colors duration-300 ease-expo",
           scrolled
-            ? "bg-[rgba(11,20,16,0.72)] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.14),0_1px_2px_rgba(0,0,0,0.35),0_12px_44px_rgba(0,0,0,0.5),0_0_60px_rgba(96,185,126,0.06)]"
-            : "bg-white/[0.06]",
+            ? "bg-[rgba(11,20,16,0.96)]"
+            : "bg-[rgba(11,20,16,0.82)]",
         )}
       >
         <div className="grid h-18 grid-cols-[auto_1fr_auto] items-center gap-4 px-3 sm:px-4">
@@ -93,11 +91,9 @@ export function Header() {
 
           <div className="flex items-center justify-end gap-2">
             <div className="hidden sm:block">
-              <Magnetic strength={8}>
-                <ButtonLink href="/#contact" size="sm" className="rounded-full">
-                  Tell us what you need
-                </ButtonLink>
-              </Magnetic>
+              <ButtonLink href="/#contact" size="sm" className="rounded-full">
+                Tell us what you need
+              </ButtonLink>
             </div>
 
             <button
@@ -123,7 +119,7 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -10 }}
             transition={{ duration: 0.2, ease: EASE }}
-            className="mx-auto mt-2 w-full max-w-5xl overflow-hidden rounded-[20px] border border-white/10 bg-[rgba(11,20,16,0.9)] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_12px_44px_rgba(0,0,0,0.5)] backdrop-blur-xl lg:hidden"
+            className="mx-auto mt-2 w-full max-w-5xl overflow-hidden rounded-[20px] border border-white/10 bg-[rgba(11,20,16,0.98)] shadow-[0_12px_32px_rgba(0,0,0,0.5)] lg:hidden"
           >
             <nav aria-label="Mobile" className="flex flex-col p-3">
               <ul className="flex flex-col">

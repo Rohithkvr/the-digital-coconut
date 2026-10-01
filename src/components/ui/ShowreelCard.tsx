@@ -60,14 +60,10 @@ export function ShowreelCard({
   return (
     <a
       href={href}
-      // A fixed name, deliberately: the visible title changes every few
-      // seconds, and a name that mutated with it would make a focused
-      // screen reader re-announce the link on every cycle. It leads with
-      // "Reel", the card's most prominent visible word, so a voice-control
-      // user saying "click Reel" still lands on it (WCAG 2.5.3).
-      aria-label={`Reel: watch films by ${label}`}
+      // Named by its visible text ("Reel · Urumbhu Productions", the film, its views).
+      // A fixed aria-label here didn't contain that text, which fails WCAG 2.5.3.
       className={cn(
-        "group flex items-center gap-3.5 rounded-2xl border border-line bg-surface-glass p-2.5 shadow-[var(--shadow-card)] backdrop-blur-xl transition-[border-color,box-shadow] duration-300 ease-expo hover:border-line-accent hover:shadow-[var(--shadow-card-hover)]",
+        "group flex items-center gap-3.5 rounded-2xl border border-line bg-surface-glass p-2.5 shadow-[var(--shadow-card)] transition-[border-color,box-shadow] duration-300 ease-expo hover:border-line-accent hover:shadow-[var(--shadow-card-hover)]",
         className,
       )}
     >
@@ -156,9 +152,8 @@ export function ShowreelCard({
 
 function RecDot() {
   return (
-    <span aria-hidden="true" className="relative flex h-1.5 w-1.5">
-      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500/70 motion-reduce:hidden" />
-      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-red-500" />
+    <span aria-hidden="true" className="flex h-1.5 w-1.5">
+      <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
     </span>
   );
 }

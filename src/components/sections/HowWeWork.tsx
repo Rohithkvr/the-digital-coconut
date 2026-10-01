@@ -89,7 +89,7 @@ export function HowWeWork() {
         {/* The path — horizontal through the nodes on desktop … */}
         <div aria-hidden="true" className="absolute top-5 right-[12.5%] left-[12.5%] hidden h-px bg-white/10 lg:block">
           <motion.div
-            className="h-full origin-left bg-gradient-to-r from-accent-mint/60 via-accent-mint to-accent-mint shadow-[0_0_12px_rgba(96,185,126,0.6)]"
+            className="h-full origin-left bg-gradient-to-r from-accent-mint/60 via-accent-mint to-accent-mint"
             style={{ scaleX: reduceMotion ? 1 : fill }}
           />
         </div>
@@ -100,7 +100,7 @@ export function HowWeWork() {
           style={trackEnd === null ? undefined : { bottom: trackEnd }}
         >
           <motion.div
-            className="h-full w-full origin-top bg-accent-mint shadow-[0_0_12px_rgba(96,185,126,0.6)]"
+            className="h-full w-full origin-top bg-accent-mint"
             style={{ scaleY: reduceMotion ? 1 : fill }}
           />
         </div>
@@ -147,7 +147,7 @@ function Step({
         className={cn(
           "absolute top-0 left-0 z-10 flex h-10 w-10 items-center justify-center rounded-full border font-mono text-xs tabular-nums transition-[background-color,border-color,color,box-shadow] duration-500 ease-expo lg:relative lg:mx-auto",
           lit
-            ? "border-accent-mint bg-[#0f2a1b] text-accent-mint shadow-[0_0_0_4px_rgba(96,185,126,0.12),0_0_24px_rgba(96,185,126,0.35)]"
+            ? "border-accent-mint bg-[#0f2a1b] text-accent-mint shadow-[0_0_0_4px_rgba(96,185,126,0.12)]"
             : "border-line bg-canvas-base text-fg-subtle",
         )}
       >
@@ -156,17 +156,20 @@ function Step({
 
       <article
         className={cn(
-          "relative overflow-hidden rounded-2xl border bg-surface-glass shadow-[var(--shadow-card)] transition-[border-color,opacity] duration-500 ease-expo lg:mt-6",
-          lit ? "border-line-accent opacity-100" : "border-line opacity-55",
+          "relative overflow-hidden rounded-2xl border bg-surface-glass shadow-[var(--shadow-card)] transition-[border-color] duration-500 ease-expo lg:mt-6",
+          lit ? "border-line-accent" : "border-line",
         )}
       >
         {/* Wider on tablets: a single full-width column there made each
-            demonstration ~400px tall for content that needs about half. 5:2 fits it at 640-1023px. */}
-        <div className="relative aspect-[16/10] overflow-hidden border-b border-white/5 bg-[#08110c] sm:aspect-[5/2] lg:aspect-[16/10]">
-          <div
-            aria-hidden="true"
-            className="grid-overlay absolute inset-0 opacity-40 [background-size:24px_24px] [mask-image:radial-gradient(ellipse_80%_75%_at_50%_45%,#000_30%,transparent_100%)]"
-          />
+            demonstration ~400px tall for content that needs about half. 5:2 fits it at 640-1023px.
+            Nothing dims while a step is unlit: fading the card (or its
+            demonstration) took text down to 2.4-2.9:1. An unlit step is just
+            still, and the border marks the current one. The demonstration
+            illustrates the text below it, so it's hidden from assistive tech. */}
+        <div
+          aria-hidden="true"
+          className="relative aspect-[16/10] overflow-hidden border-b border-white/5 bg-[#08110c] sm:aspect-[5/2] lg:aspect-[16/10]"
+        >
           {Visual && <Visual on={lit} reduceMotion={reduceMotion} />}
         </div>
 
@@ -174,7 +177,7 @@ function Step({
           <div className="flex items-center gap-2.5">
             <h3 className="font-display text-xl font-semibold tracking-tight text-fg">{title}</h3>
             {index === 0 && (
-              <span className="rounded-full border border-line-accent bg-accent-mint/10 px-2 py-0.5 font-mono text-[9px] tracking-[0.14em] text-accent-mint uppercase">
+              <span className="rounded-full border border-line-accent bg-accent-mint/10 px-2 py-0.5 font-mono text-[10px] tracking-[0.14em] text-accent-mint uppercase">
                 Start here
               </span>
             )}
@@ -244,10 +247,10 @@ function DiagnoseVisual({ on, reduceMotion }: VisualProps) {
                 variants={fadeUp(1.55)}
               />
             )}
-            <span className="relative font-mono text-[9px] tracking-[0.1em] text-fg-muted uppercase">{row}</span>
+            <span className="relative font-mono text-[10px] tracking-[0.1em] text-fg-muted uppercase">{row}</span>
             <motion.span
               className={cn(
-                "relative flex items-center gap-1 rounded-full px-1.5 py-px font-mono text-[8px] tracking-[0.12em] uppercase",
+                "relative flex items-center gap-1 rounded-full px-1.5 py-px font-mono text-[10px] tracking-[0.12em] uppercase",
                 broken ? "bg-[#D98C7A]/15 text-[#E3A596]" : "bg-accent-mint/10 text-accent-mint",
               )}
               variants={{
@@ -277,9 +280,9 @@ function PrescribeVisual({ on, reduceMotion }: VisualProps) {
     <motion.div className="absolute inset-0 flex items-center justify-center p-4" {...rootMotion(on, reduceMotion)}>
       <div className="relative w-full max-w-[88%] rounded-lg border border-white/10 bg-[#0B1410] p-3 shadow-[0_12px_30px_rgba(0,0,0,0.4)]">
         <div className="flex items-center justify-between border-b border-white/5 pb-2">
-          <span className="font-mono text-[9px] tracking-[0.14em] text-fg uppercase">The plan</span>
+          <span className="font-mono text-[10px] tracking-[0.14em] text-fg uppercase">The plan</span>
           <motion.span
-            className="flex items-center gap-1 rounded-full bg-accent-mint/15 px-1.5 py-px font-mono text-[8px] tracking-[0.12em] text-accent-mint uppercase"
+            className="flex items-center gap-1 rounded-full bg-accent-mint/15 px-1.5 py-px font-mono text-[10px] tracking-[0.12em] text-accent-mint uppercase"
             variants={{
               off: { opacity: 0, scale: 0.6, transition: { duration: 0.15 } },
               on: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 380, damping: 18, delay: 1.35 } },
@@ -294,7 +297,7 @@ function PrescribeVisual({ on, reduceMotion }: VisualProps) {
         <div className="mt-2.5 space-y-2">
           {PLAN.map((row, i) => (
             <motion.div key={row.label} className="flex items-center gap-2" variants={fadeUp(0.15 + i * 0.3)}>
-              <span className="w-14 shrink-0 font-mono text-[8px] tracking-[0.1em] text-fg-subtle uppercase">{row.label}</span>
+              <span className="w-14 shrink-0 font-mono text-[10px] tracking-[0.1em] text-fg-subtle uppercase">{row.label}</span>
               <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/5">
                 <motion.span
                   className="block h-full origin-left rounded-full bg-gradient-to-r from-accent-mint/50 to-accent-mint"
@@ -344,7 +347,7 @@ function BuildVisual({ on, reduceMotion }: VisualProps) {
         ))}
       </div>
       <motion.span
-        className="rounded-full border border-line-accent bg-accent-mint/10 px-2 py-0.5 font-mono text-[8px] tracking-[0.14em] text-accent-mint uppercase"
+        className="rounded-full border border-line-accent bg-accent-mint/10 px-2 py-0.5 font-mono text-[10px] tracking-[0.14em] text-accent-mint uppercase"
         variants={fadeUp(0.95)}
       >
         Same team
@@ -360,7 +363,7 @@ function MeasureVisual({ on, reduceMotion }: VisualProps) {
   return (
     <motion.div className="absolute inset-0 flex flex-col p-4" {...rootMotion(on, reduceMotion)}>
       <div className="flex items-center justify-between">
-        <span className="flex items-center gap-1.5 font-mono text-[8px] tracking-[0.14em] text-accent-mint uppercase">
+        <span className="flex items-center gap-1.5 font-mono text-[10px] tracking-[0.14em] text-accent-mint uppercase">
           <span className="relative flex h-1.5 w-1.5">
             <span
               className={cn(
@@ -372,7 +375,7 @@ function MeasureVisual({ on, reduceMotion }: VisualProps) {
           </span>
           Live
         </span>
-        <span className="font-mono text-[8px] tracking-[0.14em] text-fg-subtle uppercase">Week 1</span>
+        <span className="font-mono text-[10px] tracking-[0.14em] text-fg-subtle uppercase">Week 1</span>
       </div>
 
       <div className="relative mt-2 flex-1">

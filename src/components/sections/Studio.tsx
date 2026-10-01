@@ -172,9 +172,9 @@ function CinemaScreen() {
       <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/35 to-black/5" />
       <span
         aria-hidden="true"
-        className="absolute top-1/2 right-[7%] flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 bg-black/40 text-white backdrop-blur-sm transition-[transform,border-color,background-color] duration-300 ease-expo group-hover:scale-110 group-hover:border-accent-mint group-hover:bg-accent/70 group-focus-visible:scale-110 group-focus-visible:border-accent-mint sm:h-20 sm:w-20 lg:h-24 lg:w-24"
+        className="absolute top-1/2 right-[7%] flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 bg-black/40 text-white transition-[transform,border-color,background-color] duration-300 ease-expo group-hover:scale-110 group-hover:border-accent-mint group-hover:bg-accent/70 group-focus-visible:scale-110 group-focus-visible:border-accent-mint sm:h-20 sm:w-20 lg:h-24 lg:w-24"
       >
-        <span className="absolute inset-0 rounded-full border border-white/30 motion-safe:animate-ping [animation-duration:2.4s]" />
+        <span className="absolute inset-0 rounded-full border border-white/30" />
         <PlayIcon className="ml-1 h-5 w-5 sm:h-7 sm:w-7" />
         {!embeddable && (
           <span className="absolute top-full left-1/2 mt-2 -translate-x-1/2 rounded-full bg-black/70 px-2 py-1 font-mono text-[8px] leading-none tracking-[0.2em] whitespace-nowrap text-white/85 uppercase sm:mt-3 sm:px-2.5 sm:text-[10px]">
@@ -259,7 +259,7 @@ function CinemaScreen() {
         >
           <span className={cn(READOUT, "bottom-1.5 sm:bottom-3")}>
             <span className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent-mint motion-safe:animate-pulse" />
+              <span className="h-1.5 w-1.5 rounded-full bg-accent-mint" />
               Now showing
             </span>
             <span>{featuredFilm.kind}</span>

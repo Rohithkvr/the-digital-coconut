@@ -68,7 +68,7 @@ export function Contact() {
                 <dd className="mt-0.5">
                   <a
                     href={site.phoneHref}
-                    className="inline-block py-1.5 text-fg transition-colors duration-200 ease-expo hover:text-accent-mint"
+                    className="inline-block py-2.5 text-fg transition-colors duration-200 ease-expo hover:text-accent-mint"
                   >
                     {site.phone}
                   </a>
@@ -81,7 +81,7 @@ export function Contact() {
                 <dd className="mt-0.5">
                   <a
                     href={site.emailHref}
-                    className="inline-block break-all py-1.5 text-fg transition-colors duration-200 ease-expo hover:text-accent-mint"
+                    className="inline-block break-all py-2.5 text-fg transition-colors duration-200 ease-expo hover:text-accent-mint"
                   >
                     {site.email}
                   </a>
